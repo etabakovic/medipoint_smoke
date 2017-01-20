@@ -1,0 +1,56 @@
+contact1:
+  name: 'Yosemite Sam'
+  full_name: 'Yosemite Sam'
+  updated: '8/15/16 12:14 PM'
+  address: 
+    work: 
+      street: '300 E Main St.'
+      city: 'Phoenix'
+      state: 'Arizona'
+      country: 'United States'
+  phone: 
+    work: '+1222333'
+  user: 'office@firstecloud.onmicrosoft.com'
+  backup_date: '2016-08-15 10:14:10'
+contact2:
+  name: 'Yosemite Sam'
+  full_name: 'Mr. Yosemite Sam Junior'
+  job title: 'Senior QA Engineer'
+  department: 'IT'
+  company: 'MyCompany'
+  updated: '8/17/16 5:43 AM'
+  address:
+    work:
+      street: '200 E Main St.'
+      postal: '85050'
+      city: 'Phoenix'
+      state: 'Arizona'
+      country: 'United States'
+  email: 'yosemite.sam@outlook.com'
+  phone: 
+    work: '+1222333'
+  im: 'http://www.facebook.com/yosemite.sam'
+  web page: 'www.yosemite.com'
+  user: 'office@firstecloud.onmicrosoft.com'
+  backup_date: '2016-08-17 03:43:15'
+contact3:
+  name: 'Yosemite Sam'
+  full_name: 'Mr. Yosemite Sam Junior'
+  job title: 'Senior QA Engineer'
+  department: 'IT'
+  company: 'MyCompany'
+  updated: '8/18/16 4:14 AM'
+  address: 
+    work:
+      street: '300 E Main St.'
+      postal: '85050'
+      city: 'Phoenix'
+      state: 'Arizona'
+      country: 'United States'
+  email: 'yosemite.sam@xyz.com'
+  phone: 
+    work: '+1888999'
+  im: yosemite.sam
+  user: 'office@firstecloud.onmicrosoft.com'
+  web page: 'www.yosemite.com'
+  backup_date: '2016-08-18 02:14:10'

@@ -1,0 +1,4 @@
+--require ./lib/config_cloud
+--require ./lib/spec_helper
+--color
+--format documentation
