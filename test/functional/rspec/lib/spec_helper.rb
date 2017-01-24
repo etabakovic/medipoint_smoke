@@ -31,7 +31,7 @@ RSpec.configure do |config|
       caps.version = ENV['browser_version']
       caps.platform = ENV['operating_system']
       #caps[:name] = example.metadata[:full_description]
-      @browser = Selenium::WebDriver.for(:remote, url: "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub",
+      @browser = Selenium::WebDriver.for(:remote, url: "http://#{ENV['sauce_username']}:#{ENV['sauce_access_key']}@ondemand.saucelabs.com:80/wd/hub",
       desired_capabilities: caps)
       @homepage = homepage(@browser)
     else
@@ -41,6 +41,7 @@ RSpec.configure do |config|
   end
 
   config.after(:all) do
+    puts "\n>Test ended, closing the browser"
     @browser.quit()
   end
 
@@ -60,12 +61,10 @@ end
 # load corresponding environment from YML based on --options in .rspec, used by BEFORE :ALL hook
 # **********************************************************************************************
 def load_config()
-  rspec_file = '.rspec' 
-  #env = ENV['ENV_NAME']
-  #puts "\n>Loading RSpec configuration for: " + env.to_s
-  full_config = YAML::load(File.open('./config/rspec.yaml')) # full YML
-  puts "\n>Loaded RSpec configuration: " + full_config['MEDIPOINT'].to_s # only section of YML that is relevant for the particular environment
-  return full_config['MEDIPOINT'] # only section of YML that is relevant for the particular environment
+  rspec_file = '.rspec'
+  full_config = YAML::load(File.open('./config/users.yaml')) # full YML
+  puts "\n>Loaded user configuration for: " + ENV['env_name'].to_s # only section of YML that is relevant for the particular environment
+  return full_config[ENV['env_name']] # only section of YML that is relevant for the particular environment
 end
 
 # *****************************************************************************

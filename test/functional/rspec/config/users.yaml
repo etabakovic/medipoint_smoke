@@ -1,0 +1,13 @@
+medipoint_test:
+  url: 'http://www.medipoint.nl'
+  title: 'Meneer'
+  firstname: 'Emir'
+  lastname: 'Tabakovic'
+  street: 'Hoogstraat'
+  hno: '180'
+  postal: '2851 BE'
+  city: 'Haastrecht'
+  email: emir.tabakovic@outlook.com
+  birthdate: '28-06-1949'
+  username: 'emir'
+  password: 'Password123'

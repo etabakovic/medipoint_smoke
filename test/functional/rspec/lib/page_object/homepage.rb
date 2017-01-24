@@ -4,6 +4,10 @@ class Homepage < PageContainer
 		@browser.find_element(:id, 'logo')
 	end
 
+	def signup
+		@browser.find_element(:link, 'Registreren')
+	end
+
 	def login_header
 		@browser.find_element(:class, 'EPi-Commerce-loginButton')
 	end
@@ -35,5 +39,9 @@ class Homepage < PageContainer
 
 	def goto_cart
 		return Cart.new(@browser)
+	end
+
+	def goto_signup
+		return Signup.new(@browser)
 	end
 end
