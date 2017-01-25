@@ -1,9 +1,8 @@
 describe "Medipoint smoke", :skip => false do
 
   var = Variables.new
-  var.items = 3
-
-  search_name = 'Buienradar BR1000'
+  var.items = 3 #item count for an article searched
+  search_name = 'Buienradar BR1000' #name of the article searched for
   #search_name = 'Buienradar BR800'
   #search_name = 'Insectenvanger'
 
@@ -151,8 +150,12 @@ describe "Medipoint smoke", :skip => false do
 
     it "check #{search_name} item unit price" do
       wait.until {@homepage.goto_main.item_price}
-      var.code = @homepage.goto_main.item_code.attribute('value')
       expect(@homepage.goto_main.item_price.text.gsub(/\s+/,'')).to eq var.price_s
+    end
+
+    it "extract a #{search_name} product number" do
+      wait.until {@homepage.goto_main.item_code}
+      var.code = @homepage.goto_main.item_code.attribute('value')
     end
 
     it "check default item count" do

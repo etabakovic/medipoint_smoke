@@ -26,7 +26,6 @@ class Homepage < PageContainer
 
 	def shopping_cart
 		@browser.find_element(:xpath, "//section[@id='shopping-cart']/a")
-		#@browser.find_element(:id, 'shopping-cart').find_element(:class, 'items')
 	end
 
 	def goto_login

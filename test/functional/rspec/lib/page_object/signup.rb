@@ -1,7 +1,7 @@
 class Signup < Homepage
 
 	def title
-		@browser.find_element(:id, 'Aanhef').find_elements(:tag_name, 'option')
+		@browser.find_elements(:xpath, "//select[@id='Aanhef']/option")
 	end
 
 	def first
@@ -61,7 +61,7 @@ class Signup < Homepage
 	end
 
 	def signup_success
-		@browser.find_element(:class, 'pagewrap').find_element(:tag_name, 'h1')
+		@browser.find_element(:xpath, "//div[@class='pagewrap']//h1")
 	end
 
 	def continue_shopping

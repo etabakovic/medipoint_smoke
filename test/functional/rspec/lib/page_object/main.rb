@@ -13,7 +13,7 @@ class Main < Homepage
 	end
 
 	def item_price
-		@browser.find_element(:class, 'prices').find_element(:class, 'price')
+		@browser.find_element(:class, 'price')
 	end
 
 	def item_cnt
@@ -25,15 +25,15 @@ class Main < Homepage
 	end
 
 	def ok
-		@browser.find_element(:class, 'feedback-note').find_element(:link, 'OK')
+		@browser.find_element(:link, 'OK')
 	end
 
 	def view_cart
-		@browser.find_element(:class, 'feedback-note').find_element(:link, 'Bekijk winkelwagen')
+		@browser.find_element(:link, 'Bekijk winkelwagen')
 	end
 
 	def no
-		@browser.find_element(:class, 'feedback-note').find_element(:link, 'Nee')
+		@browser.find_element(:link, 'Nee')
 	end
 
 end
