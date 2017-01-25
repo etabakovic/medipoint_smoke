@@ -11,3 +11,4 @@ medipoint_test:
   birthdate: '28-06-1949'
   username: 'emir'
   password: 'Password123'
+  random: true #if set to true, it will create an account with unique username and email by adding timestamp each time

@@ -4,9 +4,16 @@ class Main < Homepage
 		@browser.find_element(:partial_link_text, name)
 	end
 
+	def item_search_price(name)
+		@browser.find_element(:xpath, "//div[@class='overview']/ul/li[div[@class='product']/div[@class='product_details']/h2/a[contains(text(),'#{name}')]][1]//span[@class='price large']")
+	end
+
+	def item_code
+		@browser.find_element(:id, "ContentAreaMaster_ContentArea_F11_Productbeschrijving_VariatieCode")
+	end
+
 	def item_price
 		@browser.find_element(:class, 'prices').find_element(:class, 'price')
-		#@browser.find_element(:xpath, "//div[@class='prices']/span")
 	end
 
 	def item_cnt
