@@ -50,10 +50,11 @@ Example command for test script execution on Saucelabs with all available parame
 saucelabs=true env_name=medipoint_test operating_system='Windows 10' browser=chrome browser_version=55 resolution=1600x1200 sauce_username=emirTest sauce_access_key=ef8d62c4-8e33-4831-98b6-3fa57f58d4ca test_name='Automated Test' rspec ./spec/smoke_spec.rb
 ```
 
-Example command for test script exceution on local machine with all relevant parameters is given below:
+Example command for test script execution on local machine with all relevant parameters is given below:
 ```
 saucelabs=false env_name=medipoint_test bundle exec rspec ./spec/smoke_spec.rb
 ```
 
-For more information on Saucelabs platforms supportted and other details, see https://saucelabs.com/platforms
+For more information on Saucelabs platforms supported and other details, see https://saucelabs.com/platforms
 
+Note: If a new environment variables are to be defined, add it to **users.yaml**, located in **rspec/config_ folder** in the same format as the existing one. In order to use new environment variables, use env_name property when running a test script as described above or replace it with the default one in **config_cloud.rb**, located in **rspec/lib**. Also in the same environment variables, use **random** variable do define whether each user created through signup is randomized or not.
