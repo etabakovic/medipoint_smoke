@@ -5,6 +5,7 @@ require 'rspec'
 require 'yaml'
 require 'selenium-webdriver'
 require 'require_all'
+require 'rest-client'
 
 #Load all page objects using the require_all gem. This loads all sub-directories, too
 require_all './lib/'
@@ -32,6 +33,7 @@ RSpec.configure do |config|
       caps['name'] = ENV['test_name']
       @browser = Selenium::WebDriver.for(:remote, url: "http://#{ENV['sauce_username']}:#{ENV['sauce_access_key']}@ondemand.saucelabs.com:80/wd/hub",
       desired_capabilities: caps)
+      $job_id = @browser.session_id
       @homepage = homepage(@browser)
     else
       @browser = initialize_browser
@@ -39,10 +41,27 @@ RSpec.configure do |config|
     end
   end
 
+  config.after(:each) do |example|
+    if example.exception
+      $error = Array.new
+      $error.push example
+    end
+  end
+
   # ********************************************************
   # global AFTER :ALL hook (close browser)
   # ********************************************************
   config.after(:all) do
+    if ENV['saucelabs'] == 'true'
+      puts "\n>Updating job status on Saucelabs"
+      if $error.nil?
+          body = {"passed" => true}.to_json
+      else
+          body = {"passed" => false}.to_json
+      end
+      http_auth = "https://#{ENV['sauce_username']}:#{ENV['sauce_access_key']}@saucelabs.com/rest/v1/#{ENV['sauce_username']}/jobs/#{$job_id}"
+      RestClient.put(http_auth, body, {:content_type => "application/json"})
+    end
     puts "\n>Test ended, closing the browser"
     @browser.quit()
   end
