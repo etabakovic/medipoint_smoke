@@ -81,9 +81,23 @@ end
 # initialize the browser, used by BEFORE :ALL hook
 # *****************************************************************************
 def initialize_browser
-  puts "\n>Initializing Firefox browser"
   client = Selenium::WebDriver::Remote::Http::Default.new
-  @browser = Selenium::WebDriver.for :firefox, :http_client => client
+  case ENV['browser']
+  when 'firefox'
+    puts "\n>Initializing Firefox browser"
+    full_path = File.dirname(File.dirname(__FILE__)) + '/config/geckodriver0.13'
+    @browser = Selenium::WebDriver.for :firefox, http_client: client, driver_path: full_path
+  when 'chrome'
+    puts "\n>Initializing Chrome browser"
+    full_path = File.dirname(File.dirname(__FILE__)) + '/config/chromedriver2.27'
+    @browser = Selenium::WebDriver.for :chrome, http_client: client, driver_path: full_path
+  when 'safari'
+    puts "\n>Initializing Safari browser"
+    @browser = Selenium::WebDriver.for :safari, http_client: client
+  else
+    @browser = Selenium::WebDriver.for :firefox, http_client: client
+  end
+
   @browser.manage.timeouts.page_load = 10
   return @browser
 end
